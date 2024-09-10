@@ -1,7 +1,7 @@
 # J2ME Explorer
 J2ME explorer es un pequeño programa diseñado para listar y probar carpetas enteras de aplicaciones j2me, de manera mas ordenada y visual.
 
-![](https://i.ibb.co/q0R98mz/cap3.png)
+![cap3](https://i.ibb.co/q0R98mz/cap3.png)
 
 # Caracteristicas
 Al arrastrar una carpeta que contiene archivos midlet validos, el programa trata de leer el manifest y mostrar el icono y el nombre de la app, si existen.

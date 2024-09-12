@@ -35,12 +35,13 @@ namespace J2ME_Explorer
             contextMenuStrip.Items.Add("Mostrar en carpeta", null, Mostrar_Click);
 
             //imageList
-            this.LargeImageList = new ImageList
+            this.imageList = new ImageList
             {
                 ImageSize = new Size(box.Width - 12, box.Height + 6),
                 ColorDepth = ColorDepth.Depth32Bit
             };
-            
+            this.LargeImageList = imageList;
+
         }
 
         private void CustomListView_DrawItem(object sender, DrawListViewItemEventArgs e)

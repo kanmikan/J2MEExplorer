@@ -73,7 +73,7 @@ namespace J2ME_Explorer
                         vendor = manifest["MIDlet-Vendor"];
                     }
 
-                    Item item = new Item(icon, name, filepath, vendor);
+                    Item item = new Item(icon, name, filepath, manifest);
 
                     elements.Add(item);
                     OnItemAdded?.Invoke(item, elements.Count);

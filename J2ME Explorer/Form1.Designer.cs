@@ -55,6 +55,9 @@
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.MainList = new System.Windows.Forms.ListView();
+            this.listaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importarLista = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportarLista = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +78,7 @@
             // 
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.abrirCarpeta,
+            this.listaToolStripMenuItem,
             this.salir});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
@@ -83,13 +87,13 @@
             // abrirCarpeta
             // 
             this.abrirCarpeta.Name = "abrirCarpeta";
-            this.abrirCarpeta.Size = new System.Drawing.Size(151, 22);
+            this.abrirCarpeta.Size = new System.Drawing.Size(180, 22);
             this.abrirCarpeta.Text = "Abrir Carpeta...";
             // 
             // salir
             // 
             this.salir.Name = "salir";
-            this.salir.Size = new System.Drawing.Size(151, 22);
+            this.salir.Size = new System.Drawing.Size(180, 22);
             this.salir.Text = "Salir";
             // 
             // editarToolStripMenuItem
@@ -161,13 +165,13 @@
             // selectJarFolderToolStripMenuItem
             // 
             this.selectJarFolderToolStripMenuItem.Name = "selectJarFolderToolStripMenuItem";
-            this.selectJarFolderToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.selectJarFolderToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.selectJarFolderToolStripMenuItem.Text = "Select Jar Folder...";
             // 
             // refreshToolStripMenuItem
             // 
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.refreshToolStripMenuItem.Text = "Refresh";
             // 
             // editToolStripMenuItem
@@ -182,13 +186,13 @@
             // filterByFilenameToolStripMenuItem
             // 
             this.filterByFilenameToolStripMenuItem.Name = "filterByFilenameToolStripMenuItem";
-            this.filterByFilenameToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.filterByFilenameToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.filterByFilenameToolStripMenuItem.Text = "Filter by filename...";
             // 
             // searchByToolStripMenuItem
             // 
             this.searchByToolStripMenuItem.Name = "searchByToolStripMenuItem";
-            this.searchByToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.searchByToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.searchByToolStripMenuItem.Text = "Search by metadata";
             // 
             // statusStrip1
@@ -250,6 +254,27 @@
             this.MainList.TabIndex = 2;
             this.MainList.UseCompatibleStateImageBehavior = false;
             // 
+            // listaToolStripMenuItem
+            // 
+            this.listaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.importarLista,
+            this.exportarLista});
+            this.listaToolStripMenuItem.Name = "listaToolStripMenuItem";
+            this.listaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listaToolStripMenuItem.Text = "Lista";
+            // 
+            // importarLista
+            // 
+            this.importarLista.Name = "importarLista";
+            this.importarLista.Size = new System.Drawing.Size(180, 22);
+            this.importarLista.Text = "Importar...";
+            // 
+            // exportarLista
+            // 
+            this.exportarLista.Name = "exportarLista";
+            this.exportarLista.Size = new System.Drawing.Size(180, 22);
+            this.exportarLista.Text = "Exportar...";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,6 +323,9 @@
         private System.Windows.Forms.ToolStripMenuItem sortNombre;
         private System.Windows.Forms.ToolStripMenuItem sortFile;
         private System.Windows.Forms.ToolStripMenuItem sortVendor;
+        private System.Windows.Forms.ToolStripMenuItem listaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importarLista;
+        private System.Windows.Forms.ToolStripMenuItem exportarLista;
     }
 }
 

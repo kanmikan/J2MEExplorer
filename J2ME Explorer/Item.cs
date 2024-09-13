@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace J2ME_Explorer
 {
-    class Item
+    public class Item
     {
         protected Image icon;
         protected string name;

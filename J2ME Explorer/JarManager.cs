@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -92,6 +93,73 @@ namespace J2ME_Explorer
         public static async Task<IEnumerable<string>> readDirectoryFilesAsync(string fullPath)
         {
             return await Task.Run(() => Directory.EnumerateFiles(fullPath, "*.jar", SearchOption.AllDirectories));
+        }
+
+
+        public static bool CheckImageDims(string jPath, List<string> target)
+        {
+            List<(int width, int height)> dimensionsList = new List<(int, int)>();
+
+            foreach (var dimension in target)
+            {
+                string[] dimensions = dimension.Split('x');
+                if (dimensions.Length == 2 && int.TryParse(dimensions[0], out int width) && int.TryParse(dimensions[1], out int height))
+                {
+                    dimensionsList.Add((width, height));
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            using (ZipArchive archive = ZipFile.OpenRead(jPath))
+            {
+                foreach (ZipArchiveEntry entry in archive.Entries)
+                {
+                    try
+                    {
+                        if (entry.FullName.EndsWith(".png", StringComparison.OrdinalIgnoreCase) ||
+                            entry.FullName.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase) ||
+                            entry.FullName.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase))
+                        {
+                            using (Stream imageStream = entry.Open())
+                            {
+                                using (Bitmap img = new Bitmap(imageStream))
+                                {
+                                    foreach (var (targetWidth, targetHeight) in dimensionsList)
+                                    {
+                                        if (img.Width == targetWidth && img.Height == targetHeight)
+                                        {
+                                            return true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception e) 
+                    {
+                        Console.WriteLine(e);
+                        return false;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public static List<JarItem> ReadJarFilelist(string path)
+        {
+            List<JarItem> fileNames = new List<JarItem>();
+            using (ZipArchive archive = ZipFile.OpenRead(path))
+            {
+                foreach (ZipArchiveEntry entry in archive.Entries)
+                {
+                    fileNames.Add(new JarItem(entry.FullName, entry.Length, entry.LastWriteTime.DateTime));
+                }
+            }
+
+            return fileNames;
         }
 
         public static Dictionary<string, string> ReadJarManifest(string path)

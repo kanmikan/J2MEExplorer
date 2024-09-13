@@ -32,7 +32,10 @@ namespace J2ME_Explorer
             //menu contextual
             contextMenuStrip = new ContextMenuStrip();
             contextMenuStrip.Items.Add("Abrir", null, Abrir_Click);
+            contextMenuStrip.Items.Add("Ver Metadatos", null, VerMetadatos_Click);
+            contextMenuStrip.Items.Add("Ver Contenido", null, VerContenido_Click);
             contextMenuStrip.Items.Add("Mostrar en carpeta", null, Mostrar_Click);
+            //contextMenuStrip.Items.Add("Experimental", null, Test_Click);
 
             //imageList
             this.imageList = new ImageList
@@ -128,6 +131,29 @@ namespace J2ME_Explorer
             contextMenuStrip.Show(this, location);
         }
 
+        private void VerMetadatos_Click(object sender, EventArgs e) 
+        {
+            Item item = (Item)contextMenuStrip.Tag;
+            MetadataForm metadataForm = new MetadataForm(item);
+            //metadataForm.ShowDialog();
+            metadataForm.Show();
+        }
+
+        private void VerContenido_Click(object sender, EventArgs e)
+        {
+            Item item = (Item)contextMenuStrip.Tag;
+            ContentForm contentForm = new ContentForm(item);
+            contentForm.Show();
+        }
+
+        private void Test_Click(object sender, EventArgs e) 
+        {
+            var item = (Item)contextMenuStrip.Tag;
+            //List<string> jfiles = JarManager.ReadJarFilelist(item.Path);
+            bool dim = JarManager.CheckImageDims(item.Path, new List<string> { "240x320", "176x208", "208x208" });
+            Console.WriteLine(dim);
+
+        }
         private void Abrir_Click(object sender, EventArgs e) 
         {
             var item = (Item) contextMenuStrip.Tag;
